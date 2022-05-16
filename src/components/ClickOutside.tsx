@@ -11,7 +11,7 @@ const Wrapper = styled.div``
 
 const Input = styled.input``
 
-const Header: React.FC = () => {
+const ClickOutside: React.FC = () => {
 
     const [keyword, setKeyword] = useState<string>('')
 
@@ -38,4 +38,4 @@ const Header: React.FC = () => {
     )
 }
 
-export default Header
+export default ClickOutside

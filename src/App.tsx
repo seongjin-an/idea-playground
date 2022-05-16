@@ -1,11 +1,11 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
-import Header from "./components/Header";
+import ClickOutside from "./components/ClickOutside";
 
 function App() {
   return (
-    <Header/>
+    <ClickOutside/>
   );
 }
 
