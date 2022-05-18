@@ -1,4 +1,13 @@
-export const createMockCard = () => ({
+export interface ICard {
+    id?: number,
+    name: string,
+    image: string,
+    age: number,
+    company: string,
+    education: string,
+}
+
+export const createMockCard = (): ICard => ({
     id: new Date().getTime(),
     name: Math.random().toString(36).replace(/[^a-z]+/g, ''),
     image: `https://picsum.photos/500/800?${new Date().getTime()}`,

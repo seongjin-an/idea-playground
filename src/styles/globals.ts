@@ -1,11 +1,28 @@
-export const commonStyles = {
+import React from "react";
+interface ICommonStyles {
+    flex: React.CSSProperties
+    flex1: React.CSSProperties
+    flexCenter: React.CSSProperties
+    flexColumn: React.CSSProperties
+}
+interface IPageStyles {
+    pageWrap: React.CSSProperties
+    logo: React.CSSProperties
+    matchButton: React.CSSProperties
+    matchCardRoot: React.CSSProperties
+    matchCardImageWrap: React.CSSProperties
+    matchCardImage: React.CSSProperties,
+    matchLogRoot: React.CSSProperties
+    matchControllerRoot: React.CSSProperties
+}
+export const commonStyles: ICommonStyles = {
     flex: { display: 'flex' },
     flex1: { flex: 1 },
     flexCenter: { display: 'flex', justifyContent: 'center', alignItems: 'center' },
     flexColumn: { display: 'flex', flexDirection: 'column' },
 };
 
-export const pageStyles = {
+export const pageStyles: IPageStyles = {
     pageWrap: { ...commonStyles.flexColumn, width: '500px', height: '100vh', overflow: 'hidden', },
     logo: { height: '80px', background: '#f3f3f3', objectFit: 'contain' },
     matchButton: {

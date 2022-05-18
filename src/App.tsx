@@ -6,6 +6,7 @@ import CustomHook from "./components/CustomHook";
 import HookFlow from "./components/HookFlow";
 import TestCopmo from "./components/TestCopmo";
 import ForceRender from "./components/ForceRender";
+import ForceRender2 from "./components/ForceRender2";
 
 function App() {
     return (
@@ -15,7 +16,8 @@ function App() {
 
             {/*<HookFlow/>*/}
 
-            <ForceRender/>
+            {/*<ForceRender/>*/}
+            <ForceRender2/>
         </>
     );
 }
