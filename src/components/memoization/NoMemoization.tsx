@@ -1,18 +1,18 @@
-import React, { ChangeEvent, useCallback, useMemo, useRef, useState } from 'react'
-import { IUser, ICreateUserProps, IUsersProps, IUserProps } from './type'
-import { CreateUserMemo } from "./CreateUser";
-import { UserList } from "./UserList";
+import React, {ChangeEvent, useCallback, useMemo, useRef, useState} from "react";
+import {IUser} from "./type";
 import {countActiveUsers} from "./utils";
+import {CreateUser, CreateUserMemo} from "./CreateUser";
+import {UserList} from "./UserList";
 
-const Memoization: React.FC = () => {
+const NoMemoization: React.FC = () => {
     console.log('render Memoization component')
     const [ inputs, setInputs ] = useState<{ username: string, email: string }>({ username: '', email: '' })
     const { username, email } = inputs
 
-    const onChange = useCallback((event: ChangeEvent<HTMLInputElement>) => {
+    const onChange = (event: ChangeEvent<HTMLInputElement>) => {
         const { name, value } = event.target
         setInputs({...inputs, [name]: value})
-    },[inputs])
+    }
 
     const [ users, setUsers ] = useState<IUser[]>([
         {
@@ -36,7 +36,7 @@ const Memoization: React.FC = () => {
     ])
 
     const nextId = useRef<number>(4)
-    const onCreate = useCallback(() => {
+    const onCreate = () => {
         const user: IUser = {
             id: nextId.current,
             username,
@@ -49,25 +49,25 @@ const Memoization: React.FC = () => {
             email: ''
         })
         nextId.current +=1
-    }, [users, username, email])
+    }
 
-    const onRemove = useCallback((id: number) => {
+    const onRemove = (id: number) => {
         setUsers(users.filter(user => user.id !== id))
-    }, [users])
+    }
 
-    const onToggle = useCallback((id: number) => {
+    const onToggle = (id: number) => {
         setUsers(users.map(user => user.id === id ? { ...user, active: !user.active } :user ))
-    }, [] )
+    }
 
     //useMemo: 값을 재활용!
     const count = useMemo(() => countActiveUsers(users), [users])
     return(
         <>
-            <CreateUserMemo username={username} email={email} onChange={onChange} onCreate={onCreate} />
+            <CreateUser username={username} email={email} onChange={onChange} onCreate={onCreate} />
             <UserList users={users} onRemove={onRemove} onToggle={onToggle}/>
             <div>활성 사용자 수: {count}</div>
         </>
     )
 }
 
-export default Memoization
+export default NoMemoization

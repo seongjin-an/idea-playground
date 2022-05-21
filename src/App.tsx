@@ -8,6 +8,7 @@ import TestCopmo from "./components/TestCopmo";
 import ForceRender from "./components/ForceRender";
 import ForceRender2 from "./components/ForceRender2";
 import Memoization from "./components/memoization/Memoization";
+import NoMemoization from "./components/memoization/NoMemoization";
 
 function App() {
     return (
@@ -20,7 +21,8 @@ function App() {
             {/*<ForceRender/>*/}
             {/*<ForceRender2/>*/}
 
-            <Memoization/>
+            <NoMemoization/>
+            {/*<Memoization/>*/}
         </>
     );
 }
