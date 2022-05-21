@@ -65,8 +65,8 @@ const countActiveUsers = (users:IUser[]) => {
     return users.filter(user => user.active).length
 }
 
-const ReuseFunction: React.FC = () => {
-    console.log('render ReuseFunction component')
+const Memoization: React.FC = () => {
+    console.log('render Memoization component')
     const [ inputs, setInputs ] = useState<{ username: string, email: string }>({ username: '', email: '' })
     const { username, email } = inputs
 
@@ -131,4 +131,4 @@ const ReuseFunction: React.FC = () => {
     )
 }
 
-export default ReuseFunction
+export default Memoization
