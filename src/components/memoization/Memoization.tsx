@@ -11,8 +11,8 @@ const Memoization: React.FC = () => {
 
     const onChange = useCallback((event: ChangeEvent<HTMLInputElement>) => {
         const { name, value } = event.target
-        setInputs({...inputs, [name]: value})
-    },[inputs])
+        setInputs(inputs => ({...inputs, [name]: value}))
+    },[])
 
     const [ users, setUsers ] = useState<IUser[]>([
         {
@@ -43,20 +43,20 @@ const Memoization: React.FC = () => {
             email,
             active: false
         }
-        setUsers(users.concat(user))
+        setUsers(users => users.concat(user))
         setInputs({
             username: '',
             email: ''
         })
         nextId.current +=1
-    }, [users, username, email])
+    }, [username, email])
 
     const onRemove = useCallback((id: number) => {
-        setUsers(users.filter(user => user.id !== id))
-    }, [users])
+        setUsers(users => users.filter(user => user.id !== id))
+    }, [])
 
     const onToggle = useCallback((id: number) => {
-        setUsers(users.map(user => user.id === id ? { ...user, active: !user.active } :user ))
+        setUsers(users => users.map(user => user.id === id ? { ...user, active: !user.active } :user ))
     }, [] )
 
     //useMemo: 값을 재활용!

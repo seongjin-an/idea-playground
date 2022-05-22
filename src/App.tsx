@@ -21,8 +21,8 @@ function App() {
             {/*<ForceRender/>*/}
             {/*<ForceRender2/>*/}
 
-            <NoMemoization/>
-            {/*<Memoization/>*/}
+            {/*<NoMemoization/>*/}
+            <Memoization/>
         </>
     );
 }

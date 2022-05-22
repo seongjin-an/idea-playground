@@ -6,7 +6,7 @@ export const UserList: React.FC<IUsersProps> = ({ users, onRemove, onToggle }) =
     console.log('render UserList')
     return(
         <div>
-            {users.map(user=> (<User user={ user } onRemove={ onRemove } onToggle={ onToggle }/>))}
+            {users.map(user=> (<UserMemo user={ user } onRemove={ onRemove } onToggle={ onToggle }/>))}
         </div>
     )
 }
