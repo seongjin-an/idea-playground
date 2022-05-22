@@ -1,7 +1,7 @@
 import React, { ChangeEvent, useCallback, useMemo, useRef, useState } from 'react'
 import { IUser, ICreateUserProps, IUsersProps, IUserProps } from './type'
 import { CreateUserMemo } from "./CreateUser";
-import { UserList } from "./UserList";
+import {UserList, UserListMemo} from "./UserList";
 import {countActiveUsers} from "./utils";
 
 const Memoization: React.FC = () => {
@@ -64,7 +64,7 @@ const Memoization: React.FC = () => {
     return(
         <>
             <CreateUserMemo username={username} email={email} onChange={onChange} onCreate={onCreate} />
-            <UserList users={users} onRemove={onRemove} onToggle={onToggle}/>
+            <UserListMemo users={users} onRemove={onRemove} onToggle={onToggle}/>
             <div>활성 사용자 수: {count}</div>
         </>
     )

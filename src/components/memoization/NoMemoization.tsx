@@ -2,17 +2,18 @@ import React, {ChangeEvent, useCallback, useMemo, useRef, useState} from "react"
 import {IUser} from "./type";
 import {countActiveUsers} from "./utils";
 import {CreateUser, CreateUserMemo} from "./CreateUser";
-import {UserList} from "./UserList";
+import {UserList, UserListMemo} from "./UserList";
 
 const NoMemoization: React.FC = () => {
     console.log('render Memoization component')
     const [ inputs, setInputs ] = useState<{ username: string, email: string }>({ username: '', email: '' })
     const { username, email } = inputs
 
+    // useCallback
     const onChange = (event: ChangeEvent<HTMLInputElement>) => {
         const { name, value } = event.target
-        setInputs({...inputs, [name]: value})
-    }
+        setInputs(({...inputs, [name]: value}))
+    }//remove deps inputs
 
     const [ users, setUsers ] = useState<IUser[]>([
         {
@@ -36,6 +37,7 @@ const NoMemoization: React.FC = () => {
     ])
 
     const nextId = useRef<number>(4)
+    //useCallback
     const onCreate = () => {
         const user: IUser = {
             id: nextId.current,
@@ -49,15 +51,15 @@ const NoMemoization: React.FC = () => {
             email: ''
         })
         nextId.current +=1
-    }
-
+    }//remove deps users
+    //useCallback
     const onRemove = (id: number) => {
-        setUsers(users.filter(user => user.id !== id))
-    }
-
+        setUsers(users.filter(user => user.id !== id))//udpate func
+    }//remove deps users
+    //useCallback
     const onToggle = (id: number) => {
         setUsers(users.map(user => user.id === id ? { ...user, active: !user.active } :user ))
-    }
+    }//remove deps users
 
     //useMemo: 값을 재활용!
     const count = useMemo(() => countActiveUsers(users), [users])

@@ -27,3 +27,13 @@ export const checkIsMatched = () => new Promise((resolve, reject) => {
         });
     }, 2000)
 });
+
+export const mockingApi = (): Promise<{data: {ansj: string}}> => new Promise((resolve => {
+    setTimeout(() => {
+        resolve({
+            data: {
+                ansj: 'anseongjin'
+            }
+        })
+    }, 3000)
+}))

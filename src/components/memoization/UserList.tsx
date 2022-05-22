@@ -1,6 +1,6 @@
 import React from "react";
 import { IUsersProps } from "./type";
-import {User} from "./User";
+import {User, UserMemo} from "./User";
 
 export const UserList: React.FC<IUsersProps> = ({ users, onRemove, onToggle }) => {
     console.log('render UserList')
