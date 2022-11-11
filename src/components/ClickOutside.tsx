@@ -1,5 +1,5 @@
 import React, {ChangeEvent, useRef, useState} from "react";
-import styled from "@emotion/styled/macro";
+import styled from "@emotion/styled";
 import useClickOutside from "../hooks/useClickOutside";
 
 const Base = styled.div`
