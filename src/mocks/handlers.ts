@@ -32,5 +32,21 @@ export const handlers = [
                 data: posts
             })
         )
+    }),
+    rest.get('/postError', (req, res, ctx) => {
+        return res(
+            ctx.status(500),
+            ctx.json({
+                err: 'error!'
+            })
+        )
+    }),
+    rest.get('/postsError400', (req, res, ctx) => {
+        return res(
+            ctx.status(400),
+            ctx.json({
+                error: 'error'
+            })
+        )
     })
 ]

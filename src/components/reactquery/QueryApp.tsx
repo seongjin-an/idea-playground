@@ -10,9 +10,14 @@ const Frame = styled.div`
 `
 
 const QueryApp: React.FC = () => {
-    const { data: postQuery } = usePosts()
+    const { data: postQuery, isLoading, error } = usePosts()
     console.log('postQuery:', postQuery)
-
+    if (isLoading) {
+        return <div>로딩중입니다..</div>
+    }
+    if (error) {
+        return <div>앗 죄송하지만 서버 에러가 발생했습니다.</div>;
+    }
     return(
         <>
             hi
@@ -25,7 +30,7 @@ const QueryApp: React.FC = () => {
                 ))
             }
         </>
-    )
+    );
 }
 
 export default QueryApp
