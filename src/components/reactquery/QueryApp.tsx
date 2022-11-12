@@ -11,9 +11,9 @@ const Frame = styled.div`
 `
 
 const QueryApp: React.FC = () => {
-    const { data: postQuery, isLoading, error } = usePosts()
+    const { data: postQuery, isLoading, error, isFetching, isFetched } = usePosts()
     const [currentData, setCurrentData] = useState<IPost | null>(null)
-    const { data: foundQuery, refetch, isLoading: foundQueryLoading, error: foundQueryError } = usePost(currentData?.postId, currentData?.userId)
+    const { data: foundQuery, refetch, isLoading: foundQueryIsLoading, isFetched: foundQueryIsFetched, isFetching: foundQueryIsFetching, error: foundQueryError } = usePost(currentData?.postId, currentData?.userId)
     // console.log('postQuery:', postQuery)
 
     if (isLoading) {
@@ -31,9 +31,21 @@ const QueryApp: React.FC = () => {
 
     return(
         <>
+            { isLoading ? 'getPosts isLoading true' : 'getPosts isLoading false'}
+            <br/>
+            { isFetched ? 'getPosts isFetched true' : 'getPosts isFetched false'}
+            <br/>
+            { isFetching ? 'getPosts isFetching true' : 'getPosts isFetching false'}
+            <br/>
             { currentData && JSON.stringify(currentData) }
             <br/>
             { foundQuery && JSON.stringify(foundQuery) }
+            <br/>
+            { currentData && (foundQueryIsLoading ? 'getPost ' + currentData?.postId + ' isLoading true' : 'getPost ' + currentData?.postId + ' isLoading false') }
+            <br/>
+            { currentData && (foundQueryIsFetched ? 'getPost ' + currentData?.postId + ' isFetched true' : 'getPost ' + currentData?.postId + ' isFetched false') }
+            <br/>
+            { currentData && (foundQueryIsFetching ? 'getPost ' + currentData?.postId + ' isFetching true' : 'getPost ' + currentData?.postId + ' isFetching false') }
             <br/>
             {
                 postQuery?.map(post => (

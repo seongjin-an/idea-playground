@@ -1,4 +1,4 @@
-import { rest } from 'msw';
+import {rest} from 'msw';
 
 
 import {getFakePost, getFakePosts, posts} from "../components/reactquery/utils";
@@ -34,23 +34,33 @@ export const handlers = [
         )
     }),
     rest.get('/post/:postId/:userId', (req, res, ctx) => {
-        const { postId, userId } = req.params
-        const post = getFakePost(postId as string, userId as string)
-        if (post) {
-            return res(
-                ctx.status(200),
-                ctx.json({
-                    data: post
-                })
-            )
-        } else {
-            return res(
-                ctx.status(404),
-                ctx.json({
-                    error: 'not found'
-                })
-            )
-        }
+        const {postId, userId} = req.params
+
+        return new Promise(((resolve, reject) => {
+            const post = getFakePost(postId as string, userId as string)
+            setTimeout(() => {
+                if (post) {
+                    resolve(
+                        res(
+                            ctx.status(200),
+                            ctx.json({
+                                data: post
+                            })
+                        )
+                    )
+                } else {
+                    reject(
+                        res(
+                            ctx.status(404),
+                            ctx.json({
+                                error: 'not found'
+                            })
+                        )
+                    )
+                }
+            }, 2000)
+        }))
+
     }),
     rest.get('/postError', (req, res, ctx) => {
         return res(
