@@ -1,7 +1,7 @@
 import { rest } from 'msw';
 
 
-import {getFakePosts, posts} from "../components/reactquery/utils";
+import {getFakePost, getFakePosts, posts} from "../components/reactquery/utils";
 //npx msw init public/ --save
 export const handlers = [
     rest.get('/imsi', (req, res, ctx) => {
@@ -25,13 +25,32 @@ export const handlers = [
         })
     }),
     rest.get('/post', (req, res, ctx) => {
-        console.log('/post')
+        // console.log('/post')
         return res(
             ctx.status(200),
             ctx.json({
                 data: posts
             })
         )
+    }),
+    rest.get('/post/:postId/:userId', (req, res, ctx) => {
+        const { postId, userId } = req.params
+        const post = getFakePost(postId as string, userId as string)
+        if (post) {
+            return res(
+                ctx.status(200),
+                ctx.json({
+                    data: post
+                })
+            )
+        } else {
+            return res(
+                ctx.status(404),
+                ctx.json({
+                    error: 'not found'
+                })
+            )
+        }
     }),
     rest.get('/postError', (req, res, ctx) => {
         return res(

@@ -6,9 +6,17 @@ import {IPost} from "./utils";
  */
 export const getPosts = async (): Promise<IPost[]> => {
     const { data } = await axios.get('/post')
-    console.log('api getPosts:', data)
+    // console.log('api getPosts:', data)
 
     return data.data;
+}
+
+export const getPost = async (postId?: string, userId?: string): Promise<IPost> => {
+    const { data } = await axios.get('/post/' + postId + '/' + userId).catch(err => {
+        throw new Error('not found')
+    })
+    console.log('api getPost...data:', data)
+    return data.data
 }
 
 export const getPostsError = async (): Promise<IPost[]> => {

@@ -41,3 +41,8 @@ export const posts: IPost[] = [
 export const getFakePosts = () => {
     return posts;
 }
+
+export const getFakePost = (postId: string, userId: string): IPost | undefined => {
+    const post = posts.find(post => post.postId === postId && post.userId === userId)
+    return post;
+}
