@@ -9,6 +9,7 @@ import ForceRender from "./components/ForceRender";
 import ForceRender2 from "./components/ForceRender2";
 import Memoization from "./components/memoization/Memoization";
 import NoMemoization from "./components/memoization/NoMemoization";
+import QueryApp from "./components/reactquery/QueryApp";
 
 function App() {
     return (
@@ -22,7 +23,9 @@ function App() {
             {/*<ForceRender2/>*/}
 
             {/*<NoMemoization/>*/}
-            <Memoization/>
+            {/*<Memoization/>*/}
+
+            <QueryApp />
         </>
     );
 }

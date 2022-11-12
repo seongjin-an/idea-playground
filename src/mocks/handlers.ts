@@ -1,5 +1,8 @@
 import { rest } from 'msw';
 
+
+import {getFakePosts, posts} from "../components/reactquery/utils";
+//npx msw init public/ --save
 export const handlers = [
     rest.get('/imsi', (req, res, ctx) => {
         return res(
@@ -20,5 +23,14 @@ export const handlers = [
                 )
             }, 3000)
         })
+    }),
+    rest.get('/post', (req, res, ctx) => {
+        console.log('/post')
+        return res(
+            ctx.status(200),
+            ctx.json({
+                data: posts
+            })
+        )
     })
 ]
