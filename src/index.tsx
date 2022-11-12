@@ -18,7 +18,9 @@ const root = ReactDOM.createRoot(
 const queryClient = new QueryClient({
     defaultOptions: {
         queries: {
-            retry: 4
+            retry: 4,
+            refetchOnMount: false,
+            staleTime: Infinity
         }
     }
 })
