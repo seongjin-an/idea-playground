@@ -1,8 +1,8 @@
 import React, {MouseEvent, useState} from "react";
 import styled from "@emotion/styled";
 import { imsi } from '@mocks'
-import ClickOutside from "@components/ClickOutside";
-
+import {getOne} from "@utils/utils";
+import {createMockCard} from "@utils/mockUtils";
 
 import {usePost, usePosts} from "./query";
 import {IPost} from "./utils";
