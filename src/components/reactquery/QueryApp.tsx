@@ -1,15 +1,18 @@
 import React, {MouseEvent, useState} from "react";
 import styled from "@emotion/styled";
+import { imsi } from '@mocks'
+import ClickOutside from "@components/ClickOutside";
+
 
 import {usePost, usePosts} from "./query";
 import {IPost} from "./utils";
-// import example, {a, b} from 'example-lib'
-// import * as cha from 'chart.js'
+
 
 const Frame = styled.div`
     border: 1px solid #999;
 `
-
+//https://towardsthecloud.com/set-absolute-path-typescript
+const ii: imsi = 1;
 const QueryApp: React.FC = () => {
     const { data: postQuery, isLoading, error, isFetching, isFetched } = usePosts()
     const [currentData, setCurrentData] = useState<IPost | null>(null)
