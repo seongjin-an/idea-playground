@@ -19,8 +19,8 @@ const queryClient = new QueryClient({
     defaultOptions: {
         queries: {
             retry: 4,
-            refetchOnMount: false,
-            staleTime: Infinity
+            // refetchOnMount: false,
+            // staleTime: Infinity
         }
     }
 })
