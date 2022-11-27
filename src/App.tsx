@@ -11,6 +11,8 @@ import Memoization from "./components/memoization/Memoization";
 import NoMemoization from "./components/memoization/NoMemoization";
 import QueryApp from "./components/reactquery/QueryApp";
 import ListDetail from "./components/reactquery/list/ListDetail";
+import SkeletonCompo from "./components/skeleton/SkeletonCompo";
+import SuspenseCompo from "./components/skeleton/suspense/SuspenseCompo";
 
 function App() {
     return (
@@ -27,7 +29,10 @@ function App() {
             {/*<Memoization/>*/}
 
             {/*<QueryApp />*/}
-            <ListDetail />
+            {/*<ListDetail />*/}
+
+            <SkeletonCompo />
+            {/*<SuspenseCompo />*/}
         </>
     );
 }

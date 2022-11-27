@@ -4,6 +4,15 @@ import {rest} from 'msw';
 import {getFakePost, getFakePosts, posts} from "../components/reactquery/utils";
 //npx msw init public/ --save
 export const handlers = [
+    rest.get('skeleton', (req, res, ctx) => {
+       return res(
+           ctx.status(200),
+           ctx.delay(1000),
+           ctx.json({
+               data: Array(8).fill(0).map((_, index) => index)
+           })
+       )
+    }),
     rest.get('/imsi', (req, res, ctx) => {
         return res(
             ctx.status(200),
@@ -28,8 +37,9 @@ export const handlers = [
         // console.log('/post')
         return res(
             ctx.status(200),
+            ctx.delay(2000),
             ctx.json({
-                data: posts
+                data: getFakePosts(25)
             })
         )
     }),

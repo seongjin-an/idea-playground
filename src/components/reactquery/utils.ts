@@ -38,7 +38,16 @@ export const posts: IPost[] = [
     }
 ]
 
-export const getFakePosts = () => {
+export const getFakePosts = (size: number) => {
+    const posts: IPost[] = Array(size).fill(0).map((_, index) => ({
+        postId: `postId${index}`,
+        userId: `userId${index}`,
+        userName: `userName${index}`,
+        title: `title${index}`,
+        content: `content${index}`,
+        star: index,
+        createdAt: new Date()
+    }))
     return posts;
 }
 

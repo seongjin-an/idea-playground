@@ -21,6 +21,7 @@ const queryClient = new QueryClient({
             retry: 4,
             // refetchOnMount: false,
             // staleTime: Infinity
+            // suspense: true
         }
     }
 })
