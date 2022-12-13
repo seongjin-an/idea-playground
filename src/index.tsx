@@ -1,5 +1,5 @@
 import React from 'react';
-import ReactDOM from 'react-dom/client';
+import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
@@ -11,9 +11,7 @@ if (process.env.NODE_ENV === 'development') {
     worker.start()
 }
 
-const root = ReactDOM.createRoot(
-    document.getElementById('root') as HTMLElement
-);
+
 
 const queryClient = new QueryClient({
     defaultOptions: {
@@ -26,12 +24,13 @@ const queryClient = new QueryClient({
     }
 })
 
-root.render(
+ReactDOM.render(
     <React.StrictMode>
         <QueryClientProvider client={queryClient}>
             <App/>
         </QueryClientProvider>
-    </React.StrictMode>
+    </React.StrictMode>,
+    document.getElementById('root')
 );
 
 // If you want to start measuring performance in your app, pass a function

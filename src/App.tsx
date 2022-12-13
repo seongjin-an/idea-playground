@@ -13,6 +13,7 @@ import QueryApp from "./components/reactquery/QueryApp";
 import ListDetail from "./components/reactquery/list/ListDetail";
 import SkeletonCompo from "./components/skeleton/SkeletonCompo";
 import SuspenseCompo from "./components/skeleton/suspense/SuspenseCompo";
+import LeafletMap from "./components/work/LeafletMap";
 
 function App() {
     return (
@@ -31,8 +32,10 @@ function App() {
             {/*<QueryApp />*/}
             {/*<ListDetail />*/}
 
-            <SkeletonCompo />
+            {/*<SkeletonCompo />*/}
             {/*<SuspenseCompo />*/}
+
+            <LeafletMap/>
         </>
     );
 }
